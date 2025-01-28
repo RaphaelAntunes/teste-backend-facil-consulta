@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\MedicoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,3 +22,5 @@ Route::post('logout', [AuthController::class, 'logout']);
 Route::get('user', [AuthController::class, 'user'])->middleware('auth:api');
 
 
+Route::post('medicos', [MedicoController::class, 'store'])->middleware('auth:api');;
+Route::get('medicos', [MedicoController::class, 'index']);
