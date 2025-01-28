@@ -30,6 +30,7 @@ O projeto foi desenvolvido com base nas seguintes versões:
 ## Documentacão API
 
 - A documentacão da API foi escrita para ser exatamente como a disponibilizada por na Collection do POSTMAN
-- Os routes foram construidos em routes/api.php. Ex dominio de uso: localhost:80/api
+- Os routes foram construidos em routes/api.php.
+- Ex dominio de uso: localhost:80/api
 
 **[Collection](https://www.postman.com/nova-versao-fc-teste/teste-facil-consulta/collection/3sgeuqb/pessoa-back-end-plena-laravel?action=share&creator=14452688)**
