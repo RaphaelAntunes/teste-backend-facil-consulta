@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MedicoController;
 use App\Http\Controllers\PacienteController;
 use App\Http\Controllers\ConsultaController;
+use App\Http\Controllers\CidadesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,12 +30,14 @@ Route::post('medicos', [MedicoController::class, 'store'])->middleware('auth:api
 Route::get('medicos', [MedicoController::class, 'index']);
 
 //CIDADES
-
-Route::get('/cidades/{id_cidade}/medicos', [MedicoController::class, 'listByCity']);
+Route::get('/cidades/{id_cidade}/medicos', [CidadesController::class, 'listByCity']);
+Route::get('cidades', [CidadesController::class, 'index']);
 
 //PACIENTES
-Route::post('pacientes', [PacienteController::class, 'store'])->middleware('auth:api');;
-Route::post('/pacientes/{id_paciente}', [PacienteController::class, 'atualizarPaciente'])->middleware('auth:api');
+Route::middleware(['auth:api'])->group(function () {
+    Route::post('pacientes', [PacienteController::class, 'store']);
+    Route::post('/pacientes/{id_paciente}', [PacienteController::class, 'atualizarPaciente']);
+});
 
 //CONSULTA
 Route::post('/medicos/consulta', [ConsultaController::class, 'store'])->middleware('auth');
