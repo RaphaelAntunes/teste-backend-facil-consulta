@@ -16,11 +16,16 @@ use App\Http\Controllers\MedicoController;
 |
 */
 
-
+// LOGIN
 Route::post('login', [AuthController::class, 'login']);
 Route::post('logout', [AuthController::class, 'logout']);
 Route::get('user', [AuthController::class, 'user'])->middleware('auth:api');
 
 
+// MEDICOS
 Route::post('medicos', [MedicoController::class, 'store'])->middleware('auth:api');;
 Route::get('medicos', [MedicoController::class, 'index']);
+
+
+//CIDADES
+Route::get('/cidades/{id_cidade}/medicos', [MedicoController::class, 'listByCity']);
