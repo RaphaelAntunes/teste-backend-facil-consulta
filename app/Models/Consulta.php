@@ -4,11 +4,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Paciente extends Model
+class Consulta extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nome', 'celular','cpf'];
+    protected $fillable = ['medico_id', 'paciente_id','data'];
 
     protected $casts = [
         'created_at' => 'datetime:Y-m-d H:i:s',
@@ -18,8 +18,13 @@ class Paciente extends Model
 
 
     // Relaciona
-    public function consultas()
+    public function medico()
     {
-        return $this->hasMany(Consulta::class);
+        return $this->belongsTo(Medico::class);
+    }
+
+    public function paciente()
+    {
+        return $this->belongsTo(Paciente::class);
     }
 }

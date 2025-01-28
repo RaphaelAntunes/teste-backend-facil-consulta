@@ -15,4 +15,10 @@ class Medico extends Model
         'updated_at' => 'datetime:Y-m-d H:i:s',
         'deleted_at' => 'datetime:Y-m-d H:i:s',
     ];
+
+    // Relaciona
+    public function consultas()
+    {
+        return $this->hasMany(Consulta::class);
+    }
 }

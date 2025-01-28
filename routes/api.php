@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MedicoController;
 use App\Http\Controllers\PacienteController;
+use App\Http\Controllers\ConsultaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,10 +28,14 @@ Route::get('user', [AuthController::class, 'user'])->middleware('auth:api');
 Route::post('medicos', [MedicoController::class, 'store'])->middleware('auth:api');;
 Route::get('medicos', [MedicoController::class, 'index']);
 
-
 //CIDADES
+
 Route::get('/cidades/{id_cidade}/medicos', [MedicoController::class, 'listByCity']);
 
-//Paciente
+//PACIENTES
 Route::post('pacientes', [PacienteController::class, 'store'])->middleware('auth:api');;
 Route::post('/pacientes/{id_paciente}', [PacienteController::class, 'atualizarPaciente'])->middleware('auth:api');
+
+//CONSULTA
+Route::post('/medicos/consulta', [ConsultaController::class, 'store'])->middleware('auth');
+Route::get('/medicos/{id_medico}/pacientes', [ConsultaController::class, 'listarPacientesPorMedico']);
